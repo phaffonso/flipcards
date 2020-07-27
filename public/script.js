@@ -1,6 +1,7 @@
 
 $('.flip-card').click(function(){
 	$('.flip-card').toggleClass('flipped');
+	$('.txt-resposta').show();
 	console.log('flip');
 	$('.bt-prox').toggle();
 })
@@ -22,21 +23,16 @@ $('.final').click(function(){
 
 var indice = 0;
 var acertos = 0;
-perguntas = [{
-	pergunta: "Quantas patas têm 3 patos?",
-	resposta: "6"
-},{
-	pergunta: "Para que serve o score MELD?",
-	resposta: "Avaliar grau de fibrose pulmonar"
-}];
+perguntas = [];
 
 function passaPergunta(i){
 	indice = (i === undefined) ? (indice + 1) : i;
 	$('.txt-numperguntas').text(indice);
 	if(indice < perguntas.length){
 		$('.txt-pergunta').text(perguntas[indice].pergunta);
-		$('.txt-resposta').text(perguntas[indice].pergunta);
+		$('.txt-resposta').text(perguntas[indice].resposta);
 		$('.flip-card').removeClass('flipped');
+		$('.txt-resposta').hide();
 	}else{
 		$('.final').show();
 		$('.flip-card').hide();
@@ -72,14 +68,15 @@ function processData(allText) {
         var data = allTextLines[i].split(',');
         if (data.length == headers.length) {
 
-            var tarr = [];
+            var tarr = {};
             for (var j=0; j<headers.length; j++) {
-                tarr.push(headers[j]+":"+data[j]);
+                tarr[headers[j]] = data[j];
             }
             lines.push(tarr);
         }
     }
-    alert(lines);
+    perguntas = lines;
+	$('.bt-inicio').show();
 }
 
 console.log('foi');
