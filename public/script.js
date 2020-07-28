@@ -60,23 +60,15 @@ $(document).ready(function() {
 });
 
 function processData(allText) {
-    var allTextLines = allText.split(/\r\n|\n/);
-    var headers = allTextLines[0].split(',');
-    var lines = [];
-
-    for (var i=1; i<allTextLines.length; i++) {
-        var data = allTextLines[i].split(',');
-        if (data.length == headers.length) {
-
-            var tarr = {};
-            for (var j=0; j<headers.length; j++) {
-                tarr[headers[j]] = data[j];
-            }
-            lines.push(tarr);
-        }
-    }
-    perguntas = lines;
+    var parsed = Papa.parse(allText);
+	perguntas = [];
+	for(var i = 1; i < parsed.data.length; i++){
+		var each = parsed.data[i];
+		perguntas.push({
+			pergunta: each[0],
+			resposta: each[1]
+		});
+	}
+	console.log(perguntas);
 	$('.bt-inicio').show();
 }
-
-console.log('foi');
