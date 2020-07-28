@@ -17,7 +17,7 @@ $('.bt-inicio').click(function(){
 	passaPergunta(0);
 })
 
-$('.final').click(function(){
+$('.bt-reinicio').click(function(){
 	location.reload();
 })
 

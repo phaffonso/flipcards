@@ -1,10 +1,12 @@
 .all{
   margin: auto;
-  max-width: 700px;
+  max-width: 18cm;
 }
 
 .bt-inicio{
 	background-color: #ccccff;
+	text-align: center;
+	padding: 6vh 0;
 }
 
 .bt-acerto{
@@ -23,14 +25,23 @@
     margin-left: auto;
 }
 
+.crie{
+	text-align: right;
+}
+
+.txt-pergunta, .txt-resposta{
+	font-size: large;
+	padding: 5% 5%;
+}
+
 /* The flip card container - set the width and height to whatever you want.
  We have added the border property to demonstrate that the flip itself goes out 
  of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
   margin: auto;
   background-color: transparent;
-  max-width: 600px;
-  height: 400px;
+  max-width: 16cm;
+  height: 50vh;
   perspective: 3000px; /* Remove this if you don't want the 3D effect */
 }
 
